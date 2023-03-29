@@ -3,21 +3,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartPlus, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
 const Card = (props) => {
-    const { strMealThumb, strMeal, strCategory, strArea, idMeal } = props.a
+    const { id, name, price, img, ratings, stock } = props.a
     return (
         <div className='col-6 col-lg-4'>
             <div className="card shadow h-100" >
-                <img src={strMealThumb} className="card-img-top" alt="..." />
+                <img src={img} className="card-img-top" alt="..." />
                 <div className="card-body">
-                    <h5 className="card-title">{strMeal}</h5>
-                    <p>id: {idMeal}</p>
-                    <p>Cetagory: {strCategory}</p>
-                    <p>{strArea} food</p>
+                    <h5 className="card-title">{name}</h5>
+                    <h6>Price: {price}</h6>
+                    <p>ratings: {ratings}</p>
+                    <p>stock: {stock}</p>
                     <div className='d-flex justify-content-between'>
-                        <button onClick={() => props.click(idMeal, true)} className="btn btn-sm btn-primary">
-                        <FontAwesomeIcon icon={faCartPlus} beatFade /> add cart</button>
-                        <button onClick={() => props.click(idMeal, false)} className="btn btn-sm btn-danger">
-                        <FontAwesomeIcon icon={faTrashCan} shake />  delete</button>
+                        <button onClick={() => props.click(id, true)} className="btn btn-sm btn-primary">
+                            <FontAwesomeIcon icon={faCartPlus} beatFade /> add cart</button>
                     </div>
                 </div>
             </div>

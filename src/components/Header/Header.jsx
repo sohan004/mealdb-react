@@ -10,8 +10,8 @@ const Header = () => {
     const [apiData, setApiData] = useState([])
 
     useEffect(() => {
-        fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=cake`)
-            .then(res => res.json()).then(data => setApiData(data.meals))
+        fetch('products.json')
+            .then(res => res.json()).then(data => setApiData(data))
     }, [])
 
     const [save, setSave] = useState([])
@@ -26,9 +26,9 @@ const Header = () => {
     useEffect(() => {
         let newData = []
         const getData2 = getData()
-        if (getData2) {
+        if (getData2 && apiData.length > 0) {
             for (const id in getData2) {
-                const singleData = apiData.find(g => g.idMeal === id)
+                const singleData = apiData.find(g => g.id === id)
                 const quantity = getData2[id]
                 const newSingle = { ...singleData, quantity }
                 newData.push(newSingle)
@@ -44,13 +44,19 @@ const Header = () => {
             <div className='row d-flex flex-column-reverse flex-md-row'>
                 <div className="col-12 col-md-8">
                     <div className="row g-3 my-4">
-                        {apiData.map(a => <Card click={click} key={a.idMeal} a={a}></Card>)}
+                        {apiData.map(a => <Card click={click} key={a.id} a={a}></Card>)}
                     </div>
                 </div>
                 <div className="col-12 col-md-4 ">
-                    <div className='my-4 bg-light shadow-lg p-3 rounded-3'> 
+                    <div className='my-4 bg-light shadow-lg p-3 rounded-3'>
                         <h3 className='text-center mb-4'>Selected Products</h3>
-                        {save.map(s => <Food  s={s}></Food>)}
+                        <div className='d-flex justify-content-between'>
+                            <h6>Name.</h6>
+                            <h6>Qn.</h6>
+                            <h6>price</h6>
+                            <h6>+-</h6>
+                        </div>
+                        <ol>{save.map(s => <Food click={click} s={s}></Food>)}</ol>
                     </div>
                 </div>
 
