@@ -1,3 +1,6 @@
 .cart {
     background-color: rgb(205, 220, 221);
 }
+.cart img {
+    width: 50px;
+}
