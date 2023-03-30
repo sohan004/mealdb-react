@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/free-solid-svg-icons'
 import Card from './Card/Card';
 import { delet, getData, local } from '../Utiliti';
-import Food from './Food';
+import Cart from './Cart/Cart';
+import Nav from './Nav/Nav';
 
 const Header = () => {
 
@@ -41,6 +42,7 @@ const Header = () => {
 
     return (
         <>
+            <Nav></Nav>
             <div className='row d-flex flex-column-reverse flex-md-row'>
                 <div className="col-12 col-md-8">
                     <div className="row g-3 my-4">
@@ -48,16 +50,7 @@ const Header = () => {
                     </div>
                 </div>
                 <div className="col-12 col-md-4 ">
-                    <div className='my-4 bg-light shadow-lg p-3 rounded-3'>
-                        <h3 className='text-center mb-4'>Selected Products</h3>
-                        <div className='d-flex justify-content-between'>
-                            <h6>Name.</h6>
-                            <h6>Qn.</h6>
-                            <h6>price</h6>
-                            <h6>+-</h6>
-                        </div>
-                        <ol>{save.map(s => <Food click={click} s={s}></Food>)}</ol>
-                    </div>
+                    <Cart save={save} click={click}></Cart>
                 </div>
 
             </div>
