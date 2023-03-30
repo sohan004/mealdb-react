@@ -5,6 +5,8 @@ import Card from './Card/Card';
 import { delet, getData, local } from '../Utiliti';
 import Cart from './Cart/Cart';
 import Nav from './Nav/Nav';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Header = () => {
 
@@ -40,13 +42,15 @@ const Header = () => {
 
 
 
+    const notify = () => toast("item add successfully");
+
     return (
         <>
             <Nav></Nav>
             <div className='row d-flex flex-column-reverse flex-md-row'>
                 <div className="col-12 col-md-8">
                     <div className="row g-3 my-4">
-                        {apiData.map(a => <Card click={click} key={a.id} a={a}></Card>)}
+                        {apiData.map(a => <Card notify={notify} click={click} key={a.id} a={a}></Card>)}
                     </div>
                 </div>
                 <div className="col-12 col-md-4 ">
@@ -54,6 +58,7 @@ const Header = () => {
                 </div>
 
             </div>
+            <ToastContainer></ToastContainer>
 
         </>
     );

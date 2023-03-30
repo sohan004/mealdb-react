@@ -15,7 +15,7 @@ const Card = (props) => {
                     <p>ratings: {ratings}</p>
                     <p>stock: {stock}</p>
                     <div className='d-flex justify-content-between'>
-                        <button onClick={() => props.click(id, true)} className="btn btn-sm btn-primary">
+                        <button onClick={() =>{ props.click(id, true); props.notify()}} className="btn btn-sm btn-primary">
                             <FontAwesomeIcon icon={faCartPlus} beatFade /> add cart</button>
                     </div>
                 </div>
